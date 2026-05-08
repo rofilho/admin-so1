@@ -18,6 +18,7 @@ Bem-vindo ao portal de estudos! Aqui você encontra os roteiros práticos, aulas
 - [[Aula 01 - Introducao e Ementa|Aula 01 — Introdução e Ementa]]
 - [[Aula 02 - Historia do Unix e Software Livre|Aula 02 — História do Unix e do Software Livre]]
 - [[Aula 03 - Ambiente de Trabalho no Linux|Aula 03 — Ambiente de Trabalho no Linux]]
+- [[Aula 04 - Virtualizacao e Hyper-V com Ubuntu Server|Aula 04 — Virtualização e Hyper-V com Ubuntu Server]]
 
 ---
 
