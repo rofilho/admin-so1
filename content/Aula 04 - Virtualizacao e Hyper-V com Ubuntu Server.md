@@ -1,3 +1,7 @@
+﻿---
+title: "🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server"
+---
+
 ---
 disciplina: Administração de Sistemas Operacionais em Redes I
 codigo: "ADM-SO-01"

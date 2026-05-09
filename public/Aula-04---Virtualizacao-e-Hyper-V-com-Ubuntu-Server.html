@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr"><head><title>🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server | Prof. Romualdo</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Inter:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🖥️ Admin. de Sist. Operacionais I"/><meta property="og:title" content="🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server | Prof. Romualdo"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server | Prof. Romualdo"/><meta name="twitter:description" content="disciplina: Administração de Sistemas Operacionais em Redes I codigo: “ADM-SO-01” aula: 4 titulo: “Virtualização com Hyper-V e Instalação do Ubuntu Server” tipo: pratica semana: 4 data: 2026-05-09 status: publicado tags: admin-so hyper-v virtualizacao ubuntu-server linux redes-virtuais publicar: tr..."/><meta property="og:description" content="disciplina: Administração de Sistemas Operacionais em Redes I codigo: “ADM-SO-01” aula: 4 titulo: “Virtualização com Hyper-V e Instalação do Ubuntu Server” tipo: pratica semana: 4 data: 2026-05-09 status: publicado tags: admin-so hyper-v virtualizacao ubuntu-server linux redes-virtuais publicar: tr..."/><meta property="og:image:alt" content="disciplina: Administração de Sistemas Operacionais em Redes I codigo: “ADM-SO-01” aula: 4 titulo: “Virtualização com Hyper-V e Instalação do Ubuntu Server” tipo: pratica semana: 4 data: 2026-05-09 status: publicado tags: admin-so hyper-v virtualizacao ubuntu-server linux redes-virtuais publicar: tr..."/><meta property="twitter:domain" content="rofilho.github.io/admin-so1"/><meta property="og:url" content="https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server"/><meta property="twitter:url" content="https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server"/><link rel="icon" href="./static/icon.png"/><meta name="description" content="disciplina: Administração de Sistemas Operacionais em Redes I codigo: “ADM-SO-01” aula: 4 titulo: “Virtualização com Hyper-V e Instalação do Ubuntu Server” tipo: pratica semana: 4 data: 2026-05-09 status: publicado tags: admin-so hyper-v virtualizacao ubuntu-server linux redes-virtuais publicar: tr..."/><meta name="generator" content="Quartz"/><link href="./index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxyb211YVxcQXBwRGF0YVxcTG9jYWxcXFRlbXBcXGFkbWluLXNvMVxccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="./prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("./static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://rofilho.github.io/admin-so1/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server-og-image.webp"/><meta property="og:image:url" content="https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server-og-image.webp"/><meta name="twitter:image" content="https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"></div><div class="center"><div class="page-header"><header><h2 class="page-title"><a href="." class="page-title__link"><img src="https://uniube.br/img/landing/logo_azul.svg" alt="Uniube" class="page-title__logo page-title__logo--light"/><img src="https://uniube.br/img/landing/logo_branca.svg" alt="Uniube" class="page-title__logo page-title__logo--dark"/><span class="page-title__text">🖥️ Admin. de Sist. Operacionais I</span></a></h2><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Pesquisar</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Pesquisar por algo" placeholder="Pesquisar por algo"/><div class="search-layout" data-preview="true"></div></div></div></div><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Tema escuro"><title>Tema escuro</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Tema claro"><title>Tema claro</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></header><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="./">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>🖥️ 🟢 Aula 04: Virtualização com Hyper V e Instalação do Ubuntu Server</a></div></nav><nav class="lesson-nav" aria-label="Navegação entre aulas"><div class="lesson-nav__slot"></div><div class="lesson-nav__slot lesson-nav__slot--right"><a href="/Aula-01---Introducao-e-Ementa" class="nav-pill nav-pill--next" data-spa="true"><div class="nav-pill__icon">📖</div><div class="nav-pill__body"><span class="nav-pill__label">Próxima →</span><span class="nav-pill__title">🖥️ Aula  – Administração de Sistemas Operacionais em Redes I – Plano de Aulas</span></div></a></div></nav><h1 class="article-title">🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server</h1><p show-comma="true" class="content-meta"><time datetime="2026-05-08T21:38:44.000Z">08 de mai. de 2026</time><span>Leitura de 11 min</span></p></div></div><article class="popover-hint"><hr/>
+<p>disciplina: Administração de Sistemas Operacionais em Redes I
+codigo: “ADM-SO-01”
+aula: 4
+titulo: “Virtualização com Hyper-V e Instalação do Ubuntu Server”
+tipo: pratica
+semana: 4
+data: 2026-05-09
+status: publicado
+tags:</p>
+<ul>
+<li>admin-so</li>
+<li>hyper-v</li>
+<li>virtualizacao</li>
+<li>ubuntu-server</li>
+<li>linux</li>
+<li>redes-virtuais
+publicar: true</li>
+</ul>
+<hr/>
+<h1 id="-aula-04-virtualização-com-hyper-v-e-instalação-do-ubuntu-server">🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-aula-04-virtualização-com-hyper-v-e-instalação-do-ubuntu-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Disciplina:</strong> Administração de Sistemas Operacionais em Redes I
+<strong>Curso:</strong> Análise e Desenvolvimento de Sistemas | Uniube
+<strong>Semana:</strong> 4 | Sexta-feira
+<strong>Professor:</strong> Romualdo Mathias Filho
+<strong>Tipo:</strong> 🔬 Teórica + Prática (Laboratório)
+<strong>Tópicos:</strong> Hyper-V, Hypervisor Tipo 1, Virtual Switches, Provisionamento de VM, Ubuntu Server, SSH</p>
+<hr/>
+<h2 id="-objetivo-da-aula">🎯 Objetivo da Aula<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-objetivo-da-aula" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Ao final desta aula, os alunos serão capazes de:</p>
+<ul>
+<li>Compreender o conceito de virtualização e o papel do Hyper-V como Hypervisor nativo do Windows (Tipo 1 — Bare-Metal)</li>
+<li>Diferenciar os três tipos de Redes Virtuais (Switches) do Hyper-V e aplicar cada um ao cenário correto</li>
+<li>Criar uma Máquina Virtual (VM) do zero e realizar a instalação e configuração inicial do Ubuntu Server</li>
+<li>Acessar um servidor Linux remoto via SSH, simulando um ambiente corporativo ou de Cloud Computing</li>
+</ul>
+<hr/>
+<h2 id="-revisão-rápida-5-min">🔄 Revisão Rápida (5 min)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-revisão-rápida-5-min" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Conceito (Aula Anterior)</strong></th><th><strong>Conexão com hoje</strong></th></tr></thead><tbody><tr><td>Terminal Linux e comandos básicos</td><td>Será o ambiente de operação dentro da VM Ubuntu Server</td></tr><tr><td>Usuários e permissões (<code>chmod</code>, <code>chown</code>)</td><td>Aplicados durante a configuração pós-instalação do servidor</td></tr><tr><td>Conceito de servidor vs. cliente</td><td>O Ubuntu Server que instalaremos é um servidor headless (sem interface gráfica)</td></tr></tbody></table></div>
+<hr/>
+<h2 id="-1-introdução-ao-microsoft-hyper-v">📌 1. Introdução ao Microsoft Hyper-V<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-1-introdução-ao-microsoft-hyper-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="o-que-é-o-hyper-v">O que é o Hyper-V?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#o-que-é-o-hyper-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>O <strong>Hyper-V</strong> é o sistema de virtualização baseado em hipervisor da Microsoft, classificado como <strong>Hypervisor do Tipo 1 (Bare-Metal)</strong>. Diferente de soluções como o VirtualBox (Tipo 2), o Hyper-V é executado diretamente sobre o hardware do hospedeiro — antes mesmo do sistema operacional — oferecendo maior <strong>performance e isolamento</strong>.</p>
+<blockquote>
+<p>💡 <strong>Analogia prática:</strong> Pense no Hyper-V como o “gerente do condomínio”. Ele não é um inquilino como os outros (sistemas operacionais); ele administra o prédio inteiro (hardware) e aloca apartamentos (VMs) para quem precisar. O VirtualBox, por sua vez, é um inquilino que decidiu subarrendar um cômodo do próprio apartamento — funciona, mas com mais overhead.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Característica</strong></th><th><strong>Hyper-V (Tipo 1)</strong></th><th><strong>VirtualBox (Tipo 2)</strong></th></tr></thead><tbody><tr><td>Executa sobre</td><td>O hardware diretamente</td><td>O SO do Host</td></tr><tr><td>Performance</td><td>⭐ Alta</td><td>Moderada</td></tr><tr><td>Overhead</td><td>Baixo</td><td>Maior</td></tr><tr><td>Uso típico</td><td>Servidores e ambientes corporativos</td><td>Desenvolvimento e testes pessoais</td></tr><tr><td>Integração Windows</td><td>✅ Nativa</td><td>Plugins adicionais</td></tr></tbody></table></div>
+<p><strong>Presença:</strong> Disponível desde o Windows Server 2008 e nas edições <strong>Pro, Enterprise e Education</strong> do Windows 10/11.</p>
+<p><strong>Vantagens principais:</strong></p>
+<ul>
+<li>Integração nativa com o ecossistema Windows</li>
+<li>Suporte a <strong>Memória Dinâmica</strong> (ajuste automático de RAM)</li>
+<li><strong>Checkpoints (Snapshots):</strong> salvar o estado da VM como um “ponto de restauração”</li>
+<li>Suporte a <strong>VHDX</strong> (disco virtual de alta performance)</li>
+</ul>
+<hr/>
+<h3 id="requisitos-mínimos-para-habilitar-o-hyper-v">Requisitos Mínimos para Habilitar o Hyper-V<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#requisitos-mínimos-para-habilitar-o-hyper-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Requisito</strong></th><th><strong>Detalhe</strong></th></tr></thead><tbody><tr><td>Sistema Operacional</td><td>Windows 10/11 Pro, Enterprise ou Education (64 bits)</td></tr><tr><td>CPU</td><td>Suporte a virtualização assistida por hardware: <strong>Intel VT-x</strong> ou <strong>AMD-V</strong></td></tr><tr><td>SLAT</td><td>Second Level Address Translation (Intel EPT ou AMD RVI)</td></tr><tr><td>RAM</td><td>Mínimo <strong>4 GB</strong> (recomendado 8 GB para rodar Host + VMs)</td></tr></tbody></table></div>
+<h3 id="como-habilitar-o-hyper-v">Como Habilitar o Hyper-V<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#como-habilitar-o-hyper-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Via interface gráfica:</strong> <code>Painel de Controle → Programas → Ativar ou desativar recursos do Windows → ✅ Hyper-V</code></p>
+<p><strong>Via PowerShell (Administrador):</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="powershell" data-theme="github-light github-dark"><code data-language="powershell" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">Enable-WindowsOptionalFeature</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> -</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">Online </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">FeatureName Microsoft</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">Hyper</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">V </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">All</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ <strong>Atenção:</strong> É necessário <strong>reiniciar o computador</strong> após a ativação. O Hyper-V passa a ser o hypervisor nativo, e o próprio Windows passará a rodar como uma VM privilegiada sobre ele.</p>
+</blockquote>
+<hr/>
+<h2 id="-2-redes-no-hyper-v--virtual-switches">📌 2. Redes no Hyper-V — Virtual Switches<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-2-redes-no-hyper-v--virtual-switches" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A comunicação de rede no Hyper-V é gerenciada pelo <strong>Gerenciador de Comutador Virtual (Virtual Switch Manager)</strong>. Compreender os tipos de switches é fundamental para a segurança e funcionalidade dos servidores virtualizados.</p>
+<h3 id="os-três-tipos-de-switch-virtual">Os Três Tipos de Switch Virtual<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#os-três-tipos-de-switch-virtual" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Tipo</strong></th><th><strong>Quem se comunica?</strong></th><th><strong>Acesso à Internet?</strong></th><th><strong>Caso de uso típico</strong></th></tr></thead><tbody><tr><td><strong>Externo</strong></td><td>VM ↔ Rede física ↔ Host</td><td>✅ Sim (IP do roteador real)</td><td>Servidor web exposto na rede local</td></tr><tr><td><strong>Interno</strong></td><td>VM ↔ Host (sem rede física)</td><td>❌ Não (sem NAT manual)</td><td>Lab de estudo: acesso do Host à VM, sem exposição externa</td></tr><tr><td><strong>Privado</strong></td><td>VM ↔ VM apenas</td><td>❌ Não</td><td>Sub-rede isolada (ex: backend de banco de dados)</td></tr></tbody></table></div>
+<h4 id="switch-externo-external">Switch Externo (External)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#switch-externo-external" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Conecta a VM diretamente à <strong>placa de rede física do Host</strong> (cabeada ou Wi-Fi). A VM recebe um IP do mesmo roteador/DHCP da rede local — outros computadores da rede física podem acessá-la.</p>
+<blockquote>
+<p>💡 <strong>Exemplo:</strong> Um servidor web que precisa ser acessado por outros PCs do laboratório.</p>
+</blockquote>
+<h4 id="switch-interno-internal">Switch Interno (Internal)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#switch-interno-internal" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Permite comunicação entre as VMs e <strong>entre as VMs e o Host</strong>, mas <strong>sem acesso à rede física externa</strong> (a menos que você configure NAT manualmente no Windows).</p>
+<blockquote>
+<p>💡 <strong>Exemplo:</strong> Ambiente de lab onde você acessa a VM do seu PC, mas não quer expô-la à rede da sala.</p>
+</blockquote>
+<h4 id="switch-privado-private">Switch Privado (Private)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#switch-privado-private" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Permite comunicação <strong>apenas entre as VMs</strong> conectadas a ele. O Host não consegue se comunicar com essas VMs.</p>
+<blockquote>
+<p>💡 <strong>Exemplo:</strong> Simular uma sub-rede de banco de dados que só pode ser acessada por um servidor de aplicação (outra VM), nunca diretamente do exterior.</p>
+</blockquote>
+<hr/>
+<h3 id="-default-switch--o-atalho-inteligente">🔑 Default Switch — O Atalho Inteligente<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-default-switch--o-atalho-inteligente" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>O Windows 10/11 cria automaticamente o <strong>“Default Switch”</strong>. Ele funciona como um switch <strong>interno com NAT automático</strong> configurado pelo Hyper-V, garantindo que a VM tenha acesso à internet usando a conexão do Host — sem nenhuma configuração adicional. É o ideal para laboratório e instalações de SO.</p>
+<hr/>
+<h2 id="-3-laboratório-prático--instalação-do-ubuntu-server-no-hyper-v">📌 3. Laboratório Prático — Instalação do Ubuntu Server no Hyper-V<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-3-laboratório-prático--instalação-do-ubuntu-server-no-hyper-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="passo-31--download-da-imagem-iso">Passo 3.1 — Download da Imagem (ISO)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#passo-31--download-da-imagem-iso" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Acesse: <strong><a href="https://ubuntu.com/download/server" class="external">ubuntu.com/download/server<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></strong></li>
+<li>Baixe o <strong>Ubuntu Server 24.04 LTS</strong> (Long Term Support — suporte até Abril de 2029)</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Por que LTS?</strong> Versões LTS recebem atualizações de segurança por 5 anos. Em ambientes de servidor corporativo, estabilidade e suporte prolongado valem mais do que ter o recurso mais novo.</p>
+</blockquote>
+<hr/>
+<h3 id="passo-32--criando-a-máquina-virtual">Passo 3.2 — Criando a Máquina Virtual<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#passo-32--criando-a-máquina-virtual" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Abra o <strong>Gerenciador do Hyper-V</strong></li>
+<li>No painel <strong>Ações</strong> (direita), clique em <strong>Novo → Máquina Virtual…</strong></li>
+<li>Siga o assistente conforme a tabela:</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Etapa do Assistente</strong></th><th><strong>Valor Recomendado</strong></th><th><strong>Motivo</strong></th></tr></thead><tbody><tr><td>Nome e Local</td><td><code>SRV-UBUNTU-01</code></td><td>Nomenclatura padrão de servidor</td></tr><tr><td>Geração</td><td><strong>Geração 2</strong></td><td>Suporta UEFI, boot mais rápido, segurança aprimorada</td></tr><tr><td>Memória</td><td><strong>2048 MB</strong> + ✅ Memória Dinâmica</td><td>Permite que o Hyper-V gerencie RAM de forma inteligente</td></tr><tr><td>Rede</td><td><strong>Default Switch</strong></td><td>Garante acesso à internet durante a instalação</td></tr><tr><td>Disco Rígido Virtual</td><td><strong>20 GB a 30 GB</strong> (novo disco)</td><td>Suficiente para um servidor de estudo</td></tr><tr><td>Opções de Instalação</td><td>Apontar para o <code>.iso</code> do Ubuntu Server</td><td>Boot pela imagem de instalação</td></tr></tbody></table></div>
+<hr/>
+<h3 id="passo-33--configurando-o-secure-boot-crítico-para-linux-na-geração-2">Passo 3.3 — Configurando o Secure Boot (CRÍTICO para Linux na Geração 2)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#passo-33--configurando-o-secure-boot-crítico-para-linux-na-geração-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Por padrão, a Geração 2 exige assinatura da <strong>Microsoft</strong> para o boot seguro. Como usaremos Linux, é necessário alterar o modelo de certificado:</p>
+<ol>
+<li>Clique com o botão direito na VM → <strong>Configurações</strong></li>
+<li>Menu lateral → <strong>Segurança</strong></li>
+<li>Em <strong>Inicialização Segura</strong>, mantenha habilitado, mas altere o <strong>Modelo</strong> para:
+<strong><code>Autoridade de Certificação UEFI da Microsoft</code></strong> <em>(Microsoft UEFI Certificate Authority)</em></li>
+<li>Clique em <strong>OK</strong></li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>Sem essa configuração, a VM não conseguirá iniciar o Ubuntu e exibirá uma tela preta com erro de Secure Boot.</strong></p>
+</blockquote>
+<hr/>
+<h3 id="passo-34--instalando-o-ubuntu-server">Passo 3.4 — Instalando o Ubuntu Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#passo-34--instalando-o-ubuntu-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Clique com o botão direito na VM → <strong>Conectar…</strong> → <strong>Iniciar</strong></li>
+<li>Siga o instalador conforme o roteiro:</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Tela do Instalador</strong></th><th><strong>Ação</strong></th></tr></thead><tbody><tr><td>Idioma</td><td>Selecione <strong>English</strong> (recomendado para servidores — facilita troubleshooting com erros em inglês)</td></tr><tr><td>Atualizar instalador</td><td>Aceite se solicitado</td></tr><tr><td>Keyboard Layout</td><td>Selecione seu layout (ex: <code>Portuguese (Brazil)</code>)</td></tr><tr><td>Network Connections</td><td>Verifique que <code>eth0</code> recebeu IP via DHCP ✅</td></tr><tr><td>Storage</td><td>Use o disco inteiro com <strong>LVM</strong> (opção guiada) e confirme o particionamento</td></tr><tr><td>Profile Setup</td><td>Preencha conforme a tabela abaixo</td></tr><tr><td><strong>SSH Setup</strong></td><td>✅ <strong>MARQUE “Install OpenSSH server”</strong> — essencial!</td></tr><tr><td>Featured Server Snaps</td><td>Nenhum por enquanto</td></tr><tr><td>Finalização</td><td><strong>Reboot Now</strong> → pressione ENTER quando pedir para remover a mídia</td></tr></tbody></table></div>
+<p><strong>Dados do Profile Setup:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Campo</strong></th><th><strong>Valor (Exemplo)</strong></th></tr></thead><tbody><tr><td>Your name</td><td>Seu Nome Completo</td></tr><tr><td>Server name</td><td><code>srv-ubuntu-01</code></td></tr><tr><td>Username</td><td><code>aluno</code></td></tr><tr><td>Password</td><td><code>senha123</code> (apenas para laboratório)</td></tr></tbody></table></div>
+<blockquote>
+<p>💡 <strong>Por que OpenSSH?</strong> SSH (Secure Shell) é o protocolo padrão de administração remota de servidores Linux no mundo inteiro — em nuvens (AWS EC2, Azure VMs) ou on-premises. Instalar agora já nos coloca no fluxo real de trabalho de um sysadmin.
+(TANENBAUM, Andrew S. <em>Redes de Computadores</em>. 5ª ed. Pearson, 2011. p. 767)</p>
+</blockquote>
+<hr/>
+<h3 id="passo-35--pós-instalação-e-teste-de-conectividade">Passo 3.5 — Pós-Instalação e Teste de Conectividade<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#passo-35--pós-instalação-e-teste-de-conectividade" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Após a VM reiniciar, faça login com o usuário e senha criados e execute:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Descobrir o IP da VM</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">ip</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> a</span></span></code></pre></figure>
+<p>Anote o endereço IP exibido na interface <code>eth0</code> (ex: <code>172.18.x.x</code>).</p>
+<p><strong>Teste de Acesso Remoto via SSH:</strong></p>
+<p>No <strong>Windows Terminal</strong> ou <strong>PowerShell</strong> do Host:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">ssh</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> aluno@</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">IP-DA-V</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">M</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span></span></code></pre></figure>
+<ul>
+<li>Aceite a chave criptográfica digitando <code>yes</code></li>
+<li>Insira a senha quando solicitado</li>
+</ul>
+<blockquote>
+<p>🎯 <strong>Parabéns!</strong> Você está administrando um servidor Linux virtualizado via SSH — exatamente como sysadmins fazem ao gerenciar instâncias AWS EC2, Azure VMs ou servidores físicos em datacenters corporativos.</p>
+</blockquote>
+<hr/>
+<h2 id="-resumo-estrutural">📋 Resumo Estrutural<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-resumo-estrutural" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>Conceito</strong></th><th><strong>Definição em Uma Frase</strong></th></tr></thead><tbody><tr><td>Hypervisor Tipo 1 (Bare-Metal)</td><td>Roda diretamente sobre o hardware, gerenciando os SOs como VMs</td></tr><tr><td>Hypervisor Tipo 2 (Hosted)</td><td>Roda dentro de um SO hospedeiro (ex: VirtualBox no Windows)</td></tr><tr><td>Switch Externo</td><td>Conecta a VM à rede física real, com IP do roteador da LAN</td></tr><tr><td>Switch Interno</td><td>Conecta VM ao Host apenas; sem acesso à rede física</td></tr><tr><td>Switch Privado</td><td>Isola VMs entre si; o Host não tem acesso</td></tr><tr><td>Default Switch</td><td>Switch interno + NAT automático; garante internet sem configuração</td></tr><tr><td>Geração 2 (VM)</td><td>Suporta UEFI, Secure Boot e boot mais rápido para SOs modernos</td></tr><tr><td>LVM</td><td>Gerenciador lógico de volumes: permite redimensionar partições sem reinstalar</td></tr><tr><td>OpenSSH</td><td>Protocolo padrão de acesso remoto seguro a servidores Linux</td></tr></tbody></table></div>
+<hr/>
+<h2 id="-exercício-avaliativo">🧪 Exercício Avaliativo<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-exercício-avaliativo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="desafio--integração-de-competências">Desafio — Integração de Competências<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#desafio--integração-de-competências" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Objetivo:</strong> Consolidar o provisionamento de VM, redes virtuais e administração Linux remota.</p>
+<p><strong>Passos:</strong></p>
+<ol>
+<li>✅ Crie a VM <code>SRV-UBUNTU-01</code> com o Ubuntu Server conforme o roteiro desta aula</li>
+<li>✅ No Hyper-V, crie um <strong>Switch Interno</strong> chamado <code>Rede_Host_Only</code></li>
+<li>✅ Adicione essa nova interface de rede à VM do Ubuntu (em <strong>Configurações → Adaptador de Rede → Adicionar Hardware</strong>)</li>
+<li>✅ Descubra o IP da interface do switch interno (<code>ip a</code>) e acesse via SSH usando esse IP</li>
+<li>✅ No servidor Ubuntu, execute:</li>
+</ol>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Atualizar pacotes do sistema</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">sudo</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> update</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &amp;&amp; </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">sudo</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> upgrade</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Instalar o servidor web Apache</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">sudo</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apache2</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span></code></pre></figure>
+<ol start="6">
+<li>✅ Acesse o IP do servidor pelo <strong>navegador do Windows Host</strong> e tire um <strong>print da tela inicial do Apache</strong> funcionando</li>
+</ol>
+<p><strong>Entrega:</strong> Relatório em PDF com os prints das etapas, identificando: nome da VM, tipo de switch usado, IP obtido e tela do Apache no navegador.</p>
+<hr/>
+<h2 id="-banco-de-questões">❓ Banco de Questões<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-banco-de-questões" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>🔒 Esta seção é visível apenas no Obsidian do professor. Não publicada.</p>
+</blockquote>
+<h3 id="questão-1--múltipla-escolha-nível-básico">Questão 1 — Múltipla Escolha (Nível: Básico)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#questão-1--múltipla-escolha-nível-básico" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Enunciado:</strong> Um aluno precisa criar uma VM no Hyper-V que possa ser acessada por outros computadores da rede do laboratório, como se fosse um servidor real. Qual tipo de switch virtual deve ser utilizado?</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> A) Switch Privado</li>
+<li class="task-list-item"><input type="checkbox" disabled/> B) Default Switch</li>
+<li class="task-list-item"><input type="checkbox" disabled/> C) Switch Interno</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> D) Switch Externo ✅</li>
+</ul>
+<p><strong>Justificativa:</strong> O Switch Externo conecta a VM à placa de rede física do Host, fazendo com que ela receba um IP do roteador da rede real e seja visível para todos os dispositivos na LAN.</p>
+<hr/>
+<h3 id="questão-2--múltipla-escolha-nível-intermediário">Questão 2 — Múltipla Escolha (Nível: Intermediário)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#questão-2--múltipla-escolha-nível-intermediário" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Enunciado:</strong> Ao tentar iniciar uma VM Linux de Geração 2 no Hyper-V, o aluno recebe uma tela preta com erro de boot. Qual é a causa mais provável e a solução correta?</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> A) A ISO está corrompida; deve-se baixar novamente</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> B) O Secure Boot está configurado com o modelo errado; deve-se alterar para “Microsoft UEFI Certificate Authority” ✅</li>
+<li class="task-list-item"><input type="checkbox" disabled/> C) A VM não tem memória suficiente; deve-se aumentar para 4 GB</li>
+<li class="task-list-item"><input type="checkbox" disabled/> D) O Default Switch não suporta Geração 2; deve-se usar Switch Externo</li>
+</ul>
+<p><strong>Justificativa:</strong> A Geração 2 usa Secure Boot com modelo padrão da Microsoft para Windows. Para Linux, é obrigatório mudar o modelo para “Autoridade de Certificação UEFI da Microsoft”.</p>
+<hr/>
+<h3 id="questão-3--dissertativa-nível-intermediário">Questão 3 — Dissertativa (Nível: Intermediário)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#questão-3--dissertativa-nível-intermediário" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Enunciado:</strong> Explique a diferença entre um Hypervisor do Tipo 1 e um Hypervisor do Tipo 2, citando um exemplo de cada e descrevendo em qual cenário cada um é mais adequado.</p>
+<p><strong>Resposta esperada:</strong> O Hypervisor Tipo 1 (Bare-Metal), como o Hyper-V, executa diretamente sobre o hardware sem depender de um SO hospedeiro, oferecendo maior desempenho e menor latência — ideal para ambientes de produção e servidores corporativos. O Hypervisor Tipo 2 (Hosted), como o VirtualBox, roda dentro de um SO existente, sendo mais simples de instalar e ideal para desenvolvimento e testes pessoais, mas com overhead adicional.</p>
+<hr/>
+<h3 id="questão-4--dissertativa-nível-avançado">Questão 4 — Dissertativa (Nível: Avançado)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#questão-4--dissertativa-nível-avançado" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Enunciado:</strong> Um analista de sistemas precisa montar um laboratório com três VMs: um servidor web, um servidor de banco de dados e uma VM de roteamento. O servidor de banco de dados não deve ser acessado diretamente pela internet nem pelo computador do analista — apenas pelo servidor web. Proponha uma configuração de Virtual Switches para este cenário e justifique cada escolha.</p>
+<p><strong>Resposta esperada:</strong> VM Servidor Web: Switch Externo (acesso da LAN/internet) + Switch Privado (comunicação com o banco de dados). VM Banco de Dados: apenas Switch Privado (isolado, só acessível pela VM do servidor web). VM Roteamento (opcional): Switch Interno (comunicação com o Host para gerenciamento). Esta arquitetura implementa segmentação de rede similar à usada em ambientes de produção com zonas DMZ.</p>
+<hr/>
+<h2 id="-artigo-de-aprofundamento">📄 Artigo de Aprofundamento<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-artigo-de-aprofundamento" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p><a href="https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/hyper-v-on-windows-server" class="external">Microsoft Documentation — Hyper-V on Windows Server<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<blockquote>
+<p><em>Relevância: Documentação oficial da Microsoft cobrindo todos os tipos de switches virtuais, requisitos e boas práticas de configuração do Hyper-V em ambientes de produção.</em></p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://documentation.ubuntu.com/server/en/latest/how-to/security/openssh-server/" class="external">Ubuntu Server Guide — OpenSSH<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<blockquote>
+<p><em>Relevância: Guia oficial da Canonical para instalação, configuração e hardening do servidor OpenSSH no Ubuntu — base para o acesso remoto desta aula.</em></p>
+</blockquote>
+</li>
+</ul>
+<hr/>
+<h2 id="-referências-bibliográficas-e-citações">📚 Referências Bibliográficas e Citações<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-referências-bibliográficas-e-citações" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>TANENBAUM, Andrew S.; WOODHULL, Albert S.</strong> <em>Sistemas Operacionais: Projeto e Implementação</em>. 3ª ed. Bookman, 2008. <strong>Páginas citadas: Cap. 8 — Virtualização, p. 487–512</strong></li>
+<li><strong>TANENBAUM, Andrew S.</strong> <em>Redes de Computadores</em>. 5ª ed. Pearson, 2011. <strong>Página citada: p. 767</strong> (Protocolo SSH)</li>
+<li><strong>Microsoft Learn.</strong> <em>Tipos de Switch Virtual do Hyper-V</em>. Disponível em: <a href="https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines" class="external">https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Acesso em: Maio 2026.</li>
+<li><strong>Canonical Ltd.</strong> <em>Ubuntu Server 24.04 LTS — Installation Guide</em>. Disponível em: <a href="https://ubuntu.com/server/docs" class="external">https://ubuntu.com/server/docs<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Acesso em: Maio 2026.</li>
+</ul>
+<hr/>
+<p><em>Última atualização: 2026-05-09 | Status: publicado</em></p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"></div><footer class="footer "><div class="footer__brand"><img src="https://uniube.br/img/landing/logo_azul.svg" alt="Universidade de Uberaba" class="footer__logo footer__logo--light"/><img src="https://uniube.br/img/landing/logo_branca.svg" alt="Universidade de Uberaba" class="footer__logo footer__logo--dark"/><div class="footer__info"><span class="footer__name">Prof. Romualdo Filho</span><a class="footer__email" href="mailto:romualdo.filho@uniube.br">romualdo.filho@uniube.br</a></div></div><ul class="footer__links"><li><a href="https://uniube.br" target="_blank" rel="noopener noreferrer">Mural Uniube</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="./postscript.js" type="module" data-persist="true"></script></html>
