@@ -173,28 +173,28 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
   <div class="row-title">Conteúdo da Disciplina</div>
   <div class="row">
     <a href="./Aula-01---Introducao-e-Ementa" class="card" data-spa>
-      <div class="card-thumb">🖥️<div class="card-progress-bar"><div class="card-progress" style="width: 71%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula01.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 71%"></div></div></div>
       <div class="card-content">
         <div class="card-title">🖥️ Aula  – Administração de Sistemas Operacionais em Redes I – Plano de Aulas</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
       </div>
     </a>
     <a href="./Aula-02---Historia-do-Unix-e-Software-Livre" class="card" data-spa>
-      <div class="card-thumb">🖥️<div class="card-progress-bar"><div class="card-progress" style="width: 63%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula02.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 63%"></div></div></div>
       <div class="card-content">
         <div class="card-title">🖥️ Aula  – História do Unix, do Software Livre, Open Source e Introdução ao Linux</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
       </div>
     </a>
     <a href="./Aula-03---Ambiente-de-Trabalho-no-Linux" class="card" data-spa>
-      <div class="card-thumb">🖥️<div class="card-progress-bar"><div class="card-progress" style="width: 79%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula03.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 79%"></div></div></div>
       <div class="card-content">
         <div class="card-title">🖥️ Aula  – Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
       </div>
     </a>
     <a href="./Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server" class="card" data-spa>
-      <div class="card-thumb">🖥️<div class="card-progress-bar"><div class="card-progress" style="width: 77%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula04.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 77%"></div></div></div>
       <div class="card-content">
         <div class="card-title">🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
@@ -205,4 +205,6 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
 </div>
 
 </div>
+
+
 
