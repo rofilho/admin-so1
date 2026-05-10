@@ -3,8 +3,6 @@ title: "🖥️ Aula  – História do Unix, do Software Livre, Open Source e In
 ---
 
 
-![Capa](assets/capa_aula02.png)
-
 # Aula-02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
 
 Pessoal, hoje vamos dar o primeiro passo técnico na nossa jornada pela administração de sistemas operacionais em redes.
@@ -162,3 +160,4 @@ A empresa Microsoft, que no passado chamava o Linux de “câncer” (frase famo
     https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux
     
     Linus fala sobre a criação do Linux e sua visão de colaboração.
+

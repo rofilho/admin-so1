@@ -3,8 +3,6 @@ title: "🖥️ Aula  – Ambiente de Trabalho no Linux: Terminal, Comandos Bás
 ---
 
 
-![Capa](assets/capa_aula03.png)
-
 # Aula-3: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
 
 ### **Introdução**
@@ -129,3 +127,4 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
 3. Alterar as permissões para que apenas o seu usuário possa ler e escrever nos arquivos.
 
 ---
+

@@ -3,8 +3,6 @@ title: "🖥️ Aula  – Administração de Sistemas Operacionais em Redes I �
 ---
 
 
-![Capa](assets/capa_aula01.png)
-
 # Aula-01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
 
 ## 📄 Ementa
@@ -195,3 +193,4 @@ Conteúdo: Reposição / Feriado / Atividades complementares.
 Conteúdo: Fechamento de notas e Recuperação.
 
 - ♻️ **Recuperação**.
+
