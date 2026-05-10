@@ -2,6 +2,9 @@
 title: "🖥️ Aula  – Administração de Sistemas Operacionais em Redes I – Plano de Aulas"
 ---
 
+
+![Capa](assets/capa_aula01.png)
+
 # Aula-01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
 
 ## 📄 Ementa

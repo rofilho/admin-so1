@@ -2,6 +2,9 @@
 title: "🖥️ Aula  – História do Unix, do Software Livre, Open Source e Introdução ao Linux"
 ---
 
+
+![Capa](assets/capa_aula02.png)
+
 # Aula-02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
 
 Pessoal, hoje vamos dar o primeiro passo técnico na nossa jornada pela administração de sistemas operacionais em redes.

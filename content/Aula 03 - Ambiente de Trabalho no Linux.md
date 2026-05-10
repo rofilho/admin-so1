@@ -2,6 +2,9 @@
 title: "🖥️ Aula  – Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões"
 ---
 
+
+![Capa](assets/capa_aula03.png)
+
 # Aula-3: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
 
 ### **Introdução**

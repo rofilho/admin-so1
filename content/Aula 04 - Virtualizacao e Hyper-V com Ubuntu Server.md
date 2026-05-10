@@ -2,6 +2,9 @@
 title: "🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server"
 ---
 
+
+![Capa](assets/capa_aula04.png)
+
 ---
 disciplina: Administração de Sistemas Operacionais em Redes I
 codigo: "ADM-SO-01"
@@ -349,3 +352,4 @@ sudo apt install apache2 -y
 ---
 
 *Última atualização: 2026-05-09 | Status: publicado*
+
