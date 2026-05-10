@@ -1,5 +1,5 @@
 ﻿---
-title: "🖥️ Aula - 02: 🖥️ Aula  – História do Unix, do Software Livre, Open Source e Introdução ao Linux"
+title: "🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux"
 ---
 
 
@@ -160,6 +160,7 @@ A empresa Microsoft, que no passado chamava o Linux de “câncer” (frase famo
     https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux
     
     Linus fala sobre a criação do Linux e sua visão de colaboração.
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿---
-title: "🖥️ Aula - 01: 🖥️ Aula  – Administração de Sistemas Operacionais em Redes I – Plano de Aulas"
+title: "🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas"
 ---
 
 
@@ -193,6 +193,7 @@ Conteúdo: Reposição / Feriado / Atividades complementares.
 Conteúdo: Fechamento de notas e Recuperação.
 
 - ♻️ **Recuperação**.
+
 
 
 
