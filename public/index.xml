@@ -9,32 +9,32 @@
     <title>🖥️ Aula  – Administração de Sistemas Operacionais em Redes I – Plano de Aulas</title>
     <link>https://rofilho.github.io/admin-so1/Aula-01---Introducao-e-Ementa</link>
     <guid>https://rofilho.github.io/admin-so1/Aula-01---Introducao-e-Ementa</guid>
-    <description><![CDATA[  Aula-01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas 📄 Ementa Abordagem dos conceitos gerais de sistemas padrão UNIX. ]]></description>
-    <pubDate>Sun, 10 May 2026 13:13:25 GMT</pubDate>
+    <description><![CDATA[ Aula-01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas 📄 Ementa Abordagem dos conceitos gerais de sistemas padrão UNIX. ]]></description>
+    <pubDate>Sun, 10 May 2026 13:41:43 GMT</pubDate>
   </item><item>
     <title>🖥️ Aula  – História do Unix, do Software Livre, Open Source e Introdução ao Linux</title>
     <link>https://rofilho.github.io/admin-so1/Aula-02---Historia-do-Unix-e-Software-Livre</link>
     <guid>https://rofilho.github.io/admin-so1/Aula-02---Historia-do-Unix-e-Software-Livre</guid>
-    <description><![CDATA[  Aula-02: História do Unix, do Software Livre, Open Source e Introdução ao Linux Pessoal, hoje vamos dar o primeiro passo técnico na nossa jornada pela administração de sistemas operacionais em redes. ]]></description>
-    <pubDate>Sun, 10 May 2026 13:13:25 GMT</pubDate>
+    <description><![CDATA[ Aula-02: História do Unix, do Software Livre, Open Source e Introdução ao Linux Pessoal, hoje vamos dar o primeiro passo técnico na nossa jornada pela administração de sistemas operacionais em redes. ]]></description>
+    <pubDate>Sun, 10 May 2026 13:41:43 GMT</pubDate>
   </item><item>
     <title>🖥️ Aula  – Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões</title>
     <link>https://rofilho.github.io/admin-so1/Aula-03---Ambiente-de-Trabalho-no-Linux</link>
     <guid>https://rofilho.github.io/admin-so1/Aula-03---Ambiente-de-Trabalho-no-Linux</guid>
-    <description><![CDATA[  Aula-3: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões Introdução Na aula passada, vimos a história do Unix, o movimento do software livre e o nascimento do Linux. ]]></description>
-    <pubDate>Sun, 10 May 2026 13:13:25 GMT</pubDate>
+    <description><![CDATA[ Aula-3: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões Introdução Na aula passada, vimos a história do Unix, o movimento do software livre e o nascimento do Linux. ]]></description>
+    <pubDate>Sun, 10 May 2026 13:41:43 GMT</pubDate>
   </item><item>
     <title>🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server</title>
     <link>https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server</link>
     <guid>https://rofilho.github.io/admin-so1/Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server</guid>
     <description><![CDATA[  disciplina: Administração de Sistemas Operacionais em Redes I codigo: “ADM-SO-01” aula: 4 titulo: “Virtualização com Hyper-V e Instalação do Ubuntu Server” tipo: pratica semana: 4 data: 2026-05-09 status: publicado tags: admin-so hyper-v virtualizacao ubuntu-server linux redes-virtuais publicar: tr... ]]></description>
-    <pubDate>Sun, 10 May 2026 13:13:25 GMT</pubDate>
+    <pubDate>Sun, 10 May 2026 13:41:43 GMT</pubDate>
   </item><item>
     <title>🖥️ Admin. Sistemas Operacionais I</title>
     <link>https://rofilho.github.io/admin-so1/</link>
     <guid>https://rofilho.github.io/admin-so1/</guid>
     <description><![CDATA[  /* ── Oculta elementos padrão do Quartz nesta página ── */ .sidebar, .page-header, .article-title, .content-meta, footer, .lesson-nav { display: none !important; } /* ── Reset total de largura ── */ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article { display: block !i... ]]></description>
-    <pubDate>Sat, 09 May 2026 23:46:05 GMT</pubDate>
+    <pubDate>Sun, 10 May 2026 13:40:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
