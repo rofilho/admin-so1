@@ -1,31 +1,60 @@
-﻿---
-title: "🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões"
+---
+disciplina: Administração de Sistemas Operacionais em Redes I
+codigo: "ADM-SO-01"
+aula: 3
+titulo: "Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões"
+tipo: pratica
+semana: 3
+data: 2026-03-06
+status: publicado
+tags:
+  - admin-so
+  - linux
+  - terminal
+  - comandos
+  - permissoes
+publicar: true
 ---
 
+# 🖥️ Aula 03: Ambiente de Trabalho no Linux — Terminal e Permissões
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
-
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
-
-Na aula passada, vimos a **história do Unix, o movimento do software livre e o nascimento do Linux**.
-
-Agora é hora de dar um passo essencial: aprender a **navegar e interagir com o sistema Linux**.
-
-Grande parte da administração em servidores é feita via **linha de comando** (terminal).
-
-Por isso, entender comandos básicos e o conceito de **usuários e permissões** é o alicerce para qualquer administrador de sistemas.
+**Disciplina:** Administração de Sistemas Operacionais em Redes I
+**Curso:** Análise e Desenvolvimento de Sistemas / Redes | Uniube
+**Semana:** 3 | Sexta-feira, 06/03/2026
+**Professor:** Romualdo Mathias Filho
+**Tipo:** 🔬 Teórica + Prática
 
 ---
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+## 🎯 Objetivo da Aula
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+Ao final desta aula, os alunos serão capazes de:
+- Navegar pelo sistema de arquivos Linux usando o terminal.
+- Criar, copiar, mover e remover arquivos e diretórios.
+- Compreender o sistema de usuários e grupos do Linux.
+- Interpretar e modificar permissões de arquivos com `chmod` e `chown`.
+
+---
+
+## 🔄 Revisão Rápida (5 min)
+
+| **Conceito (Aula Anterior)** | **Conexão com hoje** |
+|---|---|
+| História do Linux e GNU | O terminal que usaremos hoje é fruto direto da cultura Unix/GNU |
+| Software Livre | Todos os comandos que veremos são ferramentas GNU de código aberto |
+| Filosofia Unix | "Faça uma coisa, faça bem" — cada comando Linux tem uma função específica |
+
+---
+
+## 📌 Introdução
+
+### **1. O Terminal no Linux**
 
 - Interface de texto para interação com o sistema.
 - Permite controlar o computador com maior precisão que o ambiente gráfico.
 - Em servidores, muitas vezes **só o terminal está disponível**.
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+### **2. Comandos Básicos**
 
 - Navegação entre diretórios:
     
@@ -56,7 +85,7 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
     ```
     
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+### **3. Usuários e Permissões**
 
 - Linux é **multiusuário**.
 - Cada usuário tem **UID (User ID)** e pertence a um ou mais **grupos**.
@@ -73,7 +102,7 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
     Aqui, o dono pode **ler e escrever**, o grupo só pode **ler**, e outros só podem **ler**.
     
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+### **4. Comandos de Permissões**
 
 - Verificar permissões:
     
@@ -96,7 +125,7 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
 
 ---
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+### **Exemplos Práticos**
 
 1. Criar uma pasta chamada `projeto` e dentro dela um arquivo `teste.txt`.
 2. Listar os arquivos e verificar as permissões.
@@ -105,7 +134,7 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
 
 ---
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+### **Referências e Leituras Recomendadas**
 
 - Documentação oficial do Linux (kernel.org)
 - Guia Foca Linux – Módulo Básico
@@ -114,7 +143,7 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
 
 ---
 
-# 🖥️ Aula - 03: Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões
+### **Atividade Prática**
 
 **Objetivo:** Fixar comandos básicos e permissões.
 
@@ -127,7 +156,3 @@ Por isso, entender comandos básicos e o conceito de **usuários e permissões**
 3. Alterar as permissões para que apenas o seu usuário possa ler e escrever nos arquivos.
 
 ---
-
-
-
-
