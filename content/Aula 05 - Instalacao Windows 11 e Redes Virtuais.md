@@ -215,5 +215,13 @@ O último passo de um bom administrador de redes é validar se tudo funcionou.
 - [Virtual Switch do Hyper-V (Documentação Oficial da Microsoft)](https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)
 > *Resumo prático: Excelente material de leitura para os alunos aprofundarem nos conceitos arquiteturais de redes definidas por software no ambiente Microsoft.*
 
+## 📚 Referências Bibliográficas e Citações
+
+- **TANENBAUM, Andrew S.; WOODHULL, Albert S.** *Sistemas Operacionais: Projeto e Implementação*. 3ª ed. Bookman, 2008. **Páginas citadas: Cap. 8 — Virtualização, p. 487–512**
+- **TANENBAUM, Andrew S.** *Redes de Computadores*. 5ª ed. Pearson, 2011. **Páginas citadas: Cap. 5 — Camada de Rede, p. 340–378** (Endereçamento IP, Sub-redes, ICMP)
+- **Microsoft Learn.** *Tipos de Switch Virtual do Hyper-V*. Disponível em: [https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines](https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines). Acesso em: Maio 2026.
+- **Canonical Ltd.** *Ubuntu Server — Netplan Configuration*. Disponível em: [https://netplan.io/reference](https://netplan.io/reference). Acesso em: Maio 2026.
+
 ---
 *Última atualização: 2026-05-15 | Status: publicado*
+
