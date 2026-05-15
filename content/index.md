@@ -5,11 +5,11 @@ cssclasses:
 ---
 
 <style>
-/* ── Oculta elementos padrão do Quartz nesta página ── */
+/* Oculta elementos padrão do Quartz nesta página */
 .sidebar, .page-header, .article-title, .content-meta, footer,
 .lesson-nav { display: none !important; }
 
-/* ── Reset total de largura ── */
+/* Reset total de largura */
 html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article {
   display: block !important;
   max-width: 100% !important;
@@ -19,7 +19,7 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
   overflow-x: hidden;
 }
 
-/* ── Container principal ── */
+/* Container principal */
 .dashboard-container {
   font-family: 'Outfit', sans-serif;
   background-color: #0f172a;
@@ -34,7 +34,7 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
   color: #1e293b;
 }
 
-/* ── Hero banner ── */
+/* Hero banner */
 .hero {
   position: relative;
   height: 350px;
@@ -83,7 +83,7 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
 }
 .btn:hover { background: #f1f5f9; transform: scale(1.05); }
 
-/* ── Linhas de cards (módulos) ── */
+/* Linhas de cards (modulos) */
 .row-wrapper { margin-bottom: 2.5rem; }
 .row-title   { font-size: 20px; font-weight: 700; margin-bottom: 15px; margin-left: 5px; opacity: 0.9; }
 .row {
@@ -94,10 +94,11 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  flex-wrap: wrap;
 }
 .row::-webkit-scrollbar { display: none; }
 
-/* ── Cards de aulas ── */
+/* Cards de aulas */
 .card {
   flex: 0 0 calc(100% / 4 - 15px);
   min-width: 220px;
@@ -149,7 +150,7 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
 :root[saved-theme="light"] .card-title { color: #1e293b; }
 .card-meta { font-size: 11px; color: #64748b; margin-top: auto; display: flex; justify-content: space-between; }
 
-/* ── Responsivo ── */
+/* Responsivo */
 @media (max-width: 768px) {
   .card { flex: 0 0 calc(50% - 15px); }
   .hero { padding: 1.5rem; height: 300px; }
@@ -162,42 +163,49 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
 
 <div class="hero">
   <div style="position: relative; z-index: 10;">
-    <span class="tag">▶ Continue Estudando</span>
-    <h1>🖥️ Admin. Sistemas Operacionais I</h1>
-    <p>Aprenda a administrar Linux, Virtualização e Serviços de Rede.</p>
-    <a href="./Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server" class="btn" data-spa>Retomar: 🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server</a>
+    <span class="tag">Continue Estudando</span>
+    <h1>Admin. Sistemas Operacionais I</h1>
+    <p>Aprenda a administrar Linux, Virtualiza&ccedil;&atilde;o e Servi&ccedil;os de Rede.</p>
+    <a href="./Aula-05---Instalacao-Windows-11-e-Redes-Virtuais" class="btn" data-spa>Retomar: Aula 05: Instala&ccedil;&atilde;o do Windows 11 e Redes Virtuais</a>
   </div>
 </div>
 
 <div class="row-wrapper">
-  <div class="row-title">Conteúdo da Disciplina</div>
+  <div class="row-title">Conte&uacute;do da Disciplina</div>
   <div class="row">
     <a href="./Aula-01---Introducao-e-Ementa" class="card" data-spa>
-      <div class="card-thumb" style="background-image: url('assets/capa_aula01.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 71%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula01.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 100%"></div></div></div>
       <div class="card-content">
-        <div class="card-title">🖥️ Aula  – Administração de Sistemas Operacionais em Redes I – Plano de Aulas</div>
+        <div class="card-title">Aula 01: Introdu&ccedil;&atilde;o e Ementa da Disciplina</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
       </div>
     </a>
     <a href="./Aula-02---Historia-do-Unix-e-Software-Livre" class="card" data-spa>
-      <div class="card-thumb" style="background-image: url('assets/capa_aula02.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 63%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula02.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 100%"></div></div></div>
       <div class="card-content">
-        <div class="card-title">🖥️ Aula  – História do Unix, do Software Livre, Open Source e Introdução ao Linux</div>
+        <div class="card-title">Aula 02: Hist&oacute;ria do Unix e Software Livre</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
       </div>
     </a>
     <a href="./Aula-03---Ambiente-de-Trabalho-no-Linux" class="card" data-spa>
-      <div class="card-thumb" style="background-image: url('assets/capa_aula03.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 79%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula03.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 100%"></div></div></div>
       <div class="card-content">
-        <div class="card-title">🖥️ Aula  – Ambiente de Trabalho no Linux: Terminal, Comandos Básicos e Permissões</div>
+        <div class="card-title">Aula 03: Terminal, Comandos B&aacute;sicos e Permiss&otilde;es</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
       </div>
     </a>
     <a href="./Aula-04---Virtualizacao-e-Hyper-V-com-Ubuntu-Server" class="card" data-spa>
-      <div class="card-thumb" style="background-image: url('assets/capa_aula04.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 77%"></div></div></div>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula04.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 100%"></div></div></div>
       <div class="card-content">
-        <div class="card-title">🖥️ 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server</div>
+        <div class="card-title">Aula 04: Virtualiza&ccedil;&atilde;o com Hyper-V e Ubuntu Server</div>
         <div class="card-meta"><span>Acessar Aula</span><span></span></div>
+      </div>
+    </a>
+    <a href="./Aula-05---Instalacao-Windows-11-e-Redes-Virtuais" class="card" data-spa>
+      <div class="card-thumb" style="background-image: url('assets/capa_aula05.png'); background-size: cover; background-position: center;"><div class="card-progress-bar"><div class="card-progress" style="width: 0%"></div></div></div>
+      <div class="card-content">
+        <div class="card-title">Aula 05: Windows 11 e Redes Virtuais Privadas no Hyper-V</div>
+        <div class="card-meta"><span>Acessar Aula</span><span>NOVO</span></div>
       </div>
     </a>
 
@@ -205,6 +213,3 @@ html, body, #quartz-root, #quartz-body, .page, .center, .center-content, article
 </div>
 
 </div>
-
-
-
