@@ -1,9 +1,30 @@
-﻿---
-title: "🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux"
+---
+disciplina: Administração de Sistemas Operacionais em Redes I
+codigo: "ADM-SO-01"
+aula: 2
+titulo: "História do Unix e Software Livre"
+tipo: teorica
+semana: 2
+data: 2026-02-27
+status: publicado
+tags:
+  - admin-so
+  - unix
+  - linux
+  - software-livre
+  - open-source
+publicar: true
 ---
 
+# 🔓 Aula 02: História do Unix e Software Livre
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+**Disciplina:** Administração de Sistemas Operacionais em Redes I
+**Curso:** Análise e Desenvolvimento de Sistemas / Redes | Uniube
+**Semana:** 2 | Sexta-feira, 27/02/2026
+**Professor:** Romualdo Mathias Filho
+**Tipo:** 📘 Teórica
+
+---
 
 Pessoal, hoje vamos dar o primeiro passo técnico na nossa jornada pela administração de sistemas operacionais em redes.
 
@@ -13,15 +34,15 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
 
 ---
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **Explicação Teórica**
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **1. Origem do Unix**
 
 - Criado no final dos anos 1960 e início dos anos 1970 nos laboratórios Bell Labs por **Ken Thompson** e **Dennis Ritchie**.
 - Desenvolvido inicialmente em **Assembly**, depois reescrito em **C** para portabilidade.
 - Serviu de base para inúmeros sistemas modernos.
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **2. O Movimento do Software Livre**
 
 - Conceito formalizado por **Richard Stallman** em 1983 com o **Projeto GNU**.
 - As 4 liberdades do Software Livre:
@@ -31,7 +52,7 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
     4. **Aprimorar** e disponibilizar as melhorias à comunidade.
 - Criou a **Licença GPL** para garantir juridicamente essas liberdades.
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **3. Open Source (Código Aberto)**
 
 - Termo popularizado a partir de 1998 pela **Open Source Initiative (OSI)**.
 - Mais foco no **modelo de desenvolvimento colaborativo** e benefícios práticos, menos na filosofia política.
@@ -40,7 +61,7 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
     - **Open Source** enfatiza **abertura e colaboração**.
 - Todo Software Livre é Open Source, mas nem todo Open Source garante as mesmas liberdades (depende da licença).
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **4. Licenciamento no Mundo Linux**
 
 - **GPL (GNU General Public License)**: Copyleft forte — quem modifica e redistribui deve manter a mesma licença.
 - **LGPL (Lesser GPL)**: Mais permissiva para uso em bibliotecas.
@@ -51,7 +72,7 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
     - **Copyleft** protege a liberdade exigindo que derivativos mantenham a mesma licença (ex.: GPL).
     - **Permissiva** permite reuso até em software proprietário (ex.: MIT, BSD).
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **5. O Nascimento do Linux**
 
 - Criado em 1991 por **Linus Torvalds** como um kernel livre.
 - Unido às ferramentas GNU, formou o **GNU/Linux**.
@@ -59,7 +80,7 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
 
 ---
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **Exemplos Práticos**
 
 - Mostrar como identificar a licença de um software no repositório:
     
@@ -73,7 +94,7 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
 
 ---
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **Atividade Prática**
 
 **Objetivo:** Explorar licenças de software e distribuições Linux.
 
@@ -93,9 +114,9 @@ Saber a história do Unix, do Software Livre e do Open Source não é só curios
 
 A empresa Microsoft, que no passado chamava o Linux de “câncer” (frase famosa de 2001 do ex-CEO Steve Ballmer), hoje é uma das maiores contribuidoras do kernel Linux e mantém diversos projetos open source, como o VS Code e o TypeScript.
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+## **Referências e Leituras Recomendadas**
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **Oficiais e Institucionais**
 
 1. **Free Software Foundation – O que é Software Livre?**
     
@@ -124,7 +145,7 @@ A empresa Microsoft, que no passado chamava o Linux de “câncer” (frase famo
 
 ---
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **Artigos Técnicos**
 
 1. **"The Cathedral and the Bazaar" – Eric S. Raymond**
     
@@ -147,7 +168,7 @@ A empresa Microsoft, que no passado chamava o Linux de “câncer” (frase famo
 
 ---
 
-# 🖥️ Aula - 02: História do Unix, do Software Livre, Open Source e Introdução ao Linux
+### **Vídeos Recomendados**
 
 1. **Richard Stallman – "Free Software, Free Society" (Palestra legendada)**
     
@@ -160,7 +181,3 @@ A empresa Microsoft, que no passado chamava o Linux de “câncer” (frase famo
     https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux
     
     Linus fala sobre a criação do Linux e sua visão de colaboração.
-
-
-
-

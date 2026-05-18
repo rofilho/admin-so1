@@ -1,25 +1,45 @@
-﻿---
-title: "🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas"
+---
+disciplina: Administração de Sistemas Operacionais em Redes I
+codigo: "ADM-SO-01"
+aula: 1
+titulo: "Introdução e Ementa da Disciplina"
+tipo: teorica
+semana: 1
+data: 2026-02-20
+status: publicado
+tags:
+  - admin-so
+  - ementa
+  - plano-de-ensino
+  - linux
+publicar: true
 ---
 
+# 📚 Aula 01: Introdução e Ementa da Disciplina
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+**Disciplina:** Administração de Sistemas Operacionais em Redes I
+**Curso:** Análise e Desenvolvimento de Sistemas / Redes | Uniube
+**Semana:** 1 | Sexta-feira, 20/02/2026
+**Professor:** Romualdo Mathias Filho
+**Tipo:** 📘 Teórica — Apresentação da Disciplina
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+---
+
+## 📄 Ementa
 
 Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento do software livre e do sistema operacional de rede Linux. Instalação, configuração e administração do Linux, analisando seu desempenho, características e aplicações. Utilização da linha de comandos e do ambiente gráfico do Linux. Estudo dos serviços de rede do Linux.
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## 🎯 Objetivos da Disciplina
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+### Objetivos Gerais:
 
 - Compreender os fundamentos de sistemas operacionais de redes baseados em Unix/Linux.
 - Desenvolver habilidades práticas de instalação, configuração e administração do sistema Linux.
 - Capacitar o aluno para operar serviços de rede e automações em ambientes reais e simulados.
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+### Objetivos Específicos:
 
 - Conhecer a história e os conceitos do software livre.
 - Instalar e configurar distribuições Linux (Ubuntu Desktop e Server).
@@ -31,7 +51,7 @@ Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## 📚 Conteúdo Programático Sugerido
 
 1. **História do Linux e Software Livre**
 2. **Instalação do Ubuntu Desktop e Ubuntu Server (Hyper-V)**
@@ -51,7 +71,7 @@ Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## ⚖️ Sistema de Avaliação
 
 | Avaliação | Peso (pts) | Descrição |
 | --- | --- | --- |
@@ -64,7 +84,7 @@ Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## 🧪 Metodologia
 
 - Aulas expositivas com demonstrações ao vivo no Ubuntu
 - Ambientes virtualizados com Hyper-V para práticas
@@ -74,7 +94,7 @@ Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## 🛠️ Ferramentas e Recursos
 
 - **Sistema Operacional:** Ubuntu Desktop e Ubuntu Server
 - **Virtualização:** Hyper-V (uso local em sala e notebooks)
@@ -85,15 +105,15 @@ Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## 📘 Bibliografia Sugerida
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+### Básica:
 
 - Evi Nemeth et al. — Administração de Sistemas Unix e Linux
 - Mark G. Sobell — Guia Prático do Linux
 - Carla Schroder — Linux Cookbook
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+### Complementar:
 
 - Material da Linux Foundation, LPI Essentials
 - Tutoriais oficiais do Ubuntu Server
@@ -101,7 +121,7 @@ Abordagem dos conceitos gerais de sistemas padrão UNIX. História do surgimento
 
 ---
 
-# 🖥️ Aula - 01: Administração de Sistemas Operacionais em Redes I – Plano de Aulas
+## 🗓️ Planejamento Semanal: Adm. de SO de Redes I (2026/1)
 
 **💻 Semana 1: 16/02/2026 a 22/02/2026**Conteúdo: Plano de Ensino e Introdução ao Software Livre e Linux.
 
@@ -193,7 +213,3 @@ Conteúdo: Reposição / Feriado / Atividades complementares.
 Conteúdo: Fechamento de notas e Recuperação.
 
 - ♻️ **Recuperação**.
-
-
-
-

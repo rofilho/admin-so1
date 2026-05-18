@@ -1,8 +1,3 @@
-﻿---
-title: "🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server"
----
-
-
 ---
 disciplina: Administração de Sistemas Operacionais em Redes I
 codigo: "ADM-SO-01"
@@ -22,7 +17,7 @@ tags:
 publicar: true
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+# 🟢 Aula 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
 
 **Disciplina:** Administração de Sistemas Operacionais em Redes I
 **Curso:** Análise e Desenvolvimento de Sistemas | Uniube
@@ -33,7 +28,7 @@ publicar: true
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 🎯 Objetivo da Aula
 
 Ao final desta aula, os alunos serão capazes de:
 
@@ -44,7 +39,7 @@ Ao final desta aula, os alunos serão capazes de:
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 🔄 Revisão Rápida (5 min)
 
 | **Conceito (Aula Anterior)** | **Conexão com hoje** |
 |---|---|
@@ -54,9 +49,9 @@ Ao final desta aula, os alunos serão capazes de:
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 📌 1. Introdução ao Microsoft Hyper-V
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### O que é o Hyper-V?
 
 O **Hyper-V** é o sistema de virtualização baseado em hipervisor da Microsoft, classificado como **Hypervisor do Tipo 1 (Bare-Metal)**. Diferente de soluções como o VirtualBox (Tipo 2), o Hyper-V é executado diretamente sobre o hardware do hospedeiro — antes mesmo do sistema operacional — oferecendo maior **performance e isolamento**.
 
@@ -80,7 +75,7 @@ O **Hyper-V** é o sistema de virtualização baseado em hipervisor da Microsoft
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Requisitos Mínimos para Habilitar o Hyper-V
 
 | **Requisito** | **Detalhe** |
 |---|---|
@@ -89,7 +84,7 @@ O **Hyper-V** é o sistema de virtualização baseado em hipervisor da Microsoft
 | SLAT | Second Level Address Translation (Intel EPT ou AMD RVI) |
 | RAM | Mínimo **4 GB** (recomendado 8 GB para rodar Host + VMs) |
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Como Habilitar o Hyper-V
 
 **Via interface gráfica:** `Painel de Controle → Programas → Ativar ou desativar recursos do Windows → ✅ Hyper-V`
 
@@ -103,11 +98,11 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 📌 2. Redes no Hyper-V — Virtual Switches
 
 A comunicação de rede no Hyper-V é gerenciada pelo **Gerenciador de Comutador Virtual (Virtual Switch Manager)**. Compreender os tipos de switches é fundamental para a segurança e funcionalidade dos servidores virtualizados.
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Os Três Tipos de Switch Virtual
 
 | **Tipo** | **Quem se comunica?** | **Acesso à Internet?** | **Caso de uso típico** |
 |---|---|---|---|
@@ -115,19 +110,19 @@ A comunicação de rede no Hyper-V é gerenciada pelo **Gerenciador de Comutador
 | **Interno** | VM ↔ Host (sem rede física) | ❌ Não (sem NAT manual) | Lab de estudo: acesso do Host à VM, sem exposição externa |
 | **Privado** | VM ↔ VM apenas | ❌ Não | Sub-rede isolada (ex: backend de banco de dados) |
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+#### Switch Externo (External)
 
 Conecta a VM diretamente à **placa de rede física do Host** (cabeada ou Wi-Fi). A VM recebe um IP do mesmo roteador/DHCP da rede local — outros computadores da rede física podem acessá-la.
 
 > 💡 **Exemplo:** Um servidor web que precisa ser acessado por outros PCs do laboratório.
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+#### Switch Interno (Internal)
 
 Permite comunicação entre as VMs e **entre as VMs e o Host**, mas **sem acesso à rede física externa** (a menos que você configure NAT manualmente no Windows).
 
 > 💡 **Exemplo:** Ambiente de lab onde você acessa a VM do seu PC, mas não quer expô-la à rede da sala.
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+#### Switch Privado (Private)
 
 Permite comunicação **apenas entre as VMs** conectadas a ele. O Host não consegue se comunicar com essas VMs.
 
@@ -135,15 +130,15 @@ Permite comunicação **apenas entre as VMs** conectadas a ele. O Host não cons
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### 🔑 Default Switch — O Atalho Inteligente
 
 O Windows 10/11 cria automaticamente o **"Default Switch"**. Ele funciona como um switch **interno com NAT automático** configurado pelo Hyper-V, garantindo que a VM tenha acesso à internet usando a conexão do Host — sem nenhuma configuração adicional. É o ideal para laboratório e instalações de SO.
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 📌 3. Laboratório Prático — Instalação do Ubuntu Server no Hyper-V
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Passo 3.1 — Download da Imagem (ISO)
 
 1. Acesse: **[ubuntu.com/download/server](https://ubuntu.com/download/server)**
 2. Baixe o **Ubuntu Server 24.04 LTS** (Long Term Support — suporte até Abril de 2029)
@@ -152,7 +147,7 @@ O Windows 10/11 cria automaticamente o **"Default Switch"**. Ele funciona como u
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Passo 3.2 — Criando a Máquina Virtual
 
 1. Abra o **Gerenciador do Hyper-V**
 2. No painel **Ações** (direita), clique em **Novo → Máquina Virtual...**
@@ -169,7 +164,7 @@ O Windows 10/11 cria automaticamente o **"Default Switch"**. Ele funciona como u
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Passo 3.3 — Configurando o Secure Boot (CRÍTICO para Linux na Geração 2)
 
 Por padrão, a Geração 2 exige assinatura da **Microsoft** para o boot seguro. Como usaremos Linux, é necessário alterar o modelo de certificado:
 
@@ -183,7 +178,7 @@ Por padrão, a Geração 2 exige assinatura da **Microsoft** para o boot seguro.
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Passo 3.4 — Instalando o Ubuntu Server
 
 1. Clique com o botão direito na VM → **Conectar...** → **Iniciar**
 2. Siga o instalador conforme o roteiro:
@@ -214,12 +209,12 @@ Por padrão, a Geração 2 exige assinatura da **Microsoft** para o boot seguro.
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Passo 3.5 — Pós-Instalação e Teste de Conectividade
 
 Após a VM reiniciar, faça login com o usuário e senha criados e execute:
 
 ```bash
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+# Descobrir o IP da VM
 ip a
 ```
 
@@ -240,7 +235,7 @@ ssh aluno@<IP-DA-VM>
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 📋 Resumo Estrutural
 
 | **Conceito** | **Definição em Uma Frase** |
 |---|---|
@@ -256,9 +251,9 @@ ssh aluno@<IP-DA-VM>
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 🧪 Exercício Avaliativo
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Desafio — Integração de Competências
 
 **Objetivo:** Consolidar o provisionamento de VM, redes virtuais e administração Linux remota.
 
@@ -271,10 +266,10 @@ ssh aluno@<IP-DA-VM>
 5. ✅ No servidor Ubuntu, execute:
 
 ```bash
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+# Atualizar pacotes do sistema
 sudo apt update && sudo apt upgrade -y
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+# Instalar o servidor web Apache
 sudo apt install apache2 -y
 ```
 
@@ -284,11 +279,11 @@ sudo apt install apache2 -y
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## ❓ Banco de Questões
 
 > 🔒 Esta seção é visível apenas no Obsidian do professor. Não publicada.
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Questão 1 — Múltipla Escolha (Nível: Básico)
 
 **Enunciado:** Um aluno precisa criar uma VM no Hyper-V que possa ser acessada por outros computadores da rede do laboratório, como se fosse um servidor real. Qual tipo de switch virtual deve ser utilizado?
 
@@ -301,7 +296,7 @@ sudo apt install apache2 -y
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Questão 2 — Múltipla Escolha (Nível: Intermediário)
 
 **Enunciado:** Ao tentar iniciar uma VM Linux de Geração 2 no Hyper-V, o aluno recebe uma tela preta com erro de boot. Qual é a causa mais provável e a solução correta?
 
@@ -314,7 +309,7 @@ sudo apt install apache2 -y
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Questão 3 — Dissertativa (Nível: Intermediário)
 
 **Enunciado:** Explique a diferença entre um Hypervisor do Tipo 1 e um Hypervisor do Tipo 2, citando um exemplo de cada e descrevendo em qual cenário cada um é mais adequado.
 
@@ -322,7 +317,7 @@ sudo apt install apache2 -y
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+### Questão 4 — Dissertativa (Nível: Avançado)
 
 **Enunciado:** Um analista de sistemas precisa montar um laboratório com três VMs: um servidor web, um servidor de banco de dados e uma VM de roteamento. O servidor de banco de dados não deve ser acessado diretamente pela internet nem pelo computador do analista — apenas pelo servidor web. Proponha uma configuração de Virtual Switches para este cenário e justifique cada escolha.
 
@@ -330,7 +325,7 @@ sudo apt install apache2 -y
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 📄 Artigo de Aprofundamento
 
 - [Microsoft Documentation — Hyper-V on Windows Server](https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
   > *Relevância: Documentação oficial da Microsoft cobrindo todos os tipos de switches virtuais, requisitos e boas práticas de configuração do Hyper-V em ambientes de produção.*
@@ -340,7 +335,7 @@ sudo apt install apache2 -y
 
 ---
 
-# 🖥️ Aula - 04: Virtualização com Hyper-V e Instalação do Ubuntu Server
+## 📚 Referências Bibliográficas e Citações
 
 - **TANENBAUM, Andrew S.; WOODHULL, Albert S.** *Sistemas Operacionais: Projeto e Implementação*. 3ª ed. Bookman, 2008. **Páginas citadas: Cap. 8 — Virtualização, p. 487–512**
 - **TANENBAUM, Andrew S.** *Redes de Computadores*. 5ª ed. Pearson, 2011. **Página citada: p. 767** (Protocolo SSH)
@@ -350,7 +345,3 @@ sudo apt install apache2 -y
 ---
 
 *Última atualização: 2026-05-09 | Status: publicado*
-
-
-
-
