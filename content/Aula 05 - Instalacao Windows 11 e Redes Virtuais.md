@@ -186,6 +186,12 @@ O último passo de um bom administrador de redes é validar se tudo funcionou.
 ## ❓ Banco de Questões
 
 > 🔒 Esta seção é visível apenas no Obsidian do professor. Não publicada.
+> O que a esconde é o bloco `%%` acima, não este aviso.
+
+> ⚠️ **QUESTÕES COMPROMETIDAS — REESCREVER ANTES DE USAR EM AVALIAÇÃO.**
+> De 2026-05-15 a 2026-07-25 esta seção esteve **sem `%%`** e publicada no site da
+> disciplina, com a alternativa correta marcada. Corrigido em 25/07 (`edf7ec2`) — o que não
+> desfaz quem já leu, nem cache de buscador. Decisão do Romualdo em 25/07: rotacionar.
 
 ### Questão 1: Prática (Múltipla Escolha — Nível: Básico)
 **Enunciado:** Um administrador de sistemas instalou com sucesso uma VM Windows 11 e uma VM Ubuntu Server no Hyper-V. Ele configurou um Virtual Switch do tipo "Privado" e conectou ambas as máquinas a ele. O objetivo é que as duas máquinas consigam se comunicar entre si. Ao abrir o prompt do Windows, o administrador tenta realizar um "ping" no Google (8.8.8.8) e não obtém resposta. Por que isso acontece?
