@@ -182,6 +182,7 @@ O último passo de um bom administrador de redes é validar se tudo funcionou.
 
 ---
 
+%%
 ## ❓ Banco de Questões
 
 > 🔒 Esta seção é visível apenas no Obsidian do professor. Não publicada.
@@ -209,6 +210,7 @@ O último passo de um bom administrador de redes é validar se tudo funcionou.
 **Justificativa:** O Windows 11 exige obrigatoriamente a arquitetura UEFI (disponível apenas na Geração 2 do Hyper-V) e um módulo TPM 2.0 (emulado ativando a opção de segurança na VM).
 
 ---
+%%
 
 ## 📄 Artigo de Aprofundamento
 

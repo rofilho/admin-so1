@@ -279,6 +279,7 @@ sudo apt install apache2 -y
 
 ---
 
+%%
 ## ❓ Banco de Questões
 
 > 🔒 Esta seção é visível apenas no Obsidian do professor. Não publicada.
@@ -324,6 +325,7 @@ sudo apt install apache2 -y
 **Resposta esperada:** VM Servidor Web: Switch Externo (acesso da LAN/internet) + Switch Privado (comunicação com o banco de dados). VM Banco de Dados: apenas Switch Privado (isolado, só acessível pela VM do servidor web). VM Roteamento (opcional): Switch Interno (comunicação com o Host para gerenciamento). Esta arquitetura implementa segmentação de rede similar à usada em ambientes de produção com zonas DMZ.
 
 ---
+%%
 
 ## 📄 Artigo de Aprofundamento
 
