@@ -181,43 +181,6 @@ O último passo de um bom administrador de redes é validar se tudo funcionou.
 | **Netplan** | Utilitário usado nas distribuições Linux modernas para gerenciar e aplicar configurações de rede (`.yaml`). |
 
 ---
-
-%%
-## ❓ Banco de Questões
-
-> 🔒 Esta seção é visível apenas no Obsidian do professor. Não publicada.
-> O que a esconde é o bloco de comentário do Obsidian que abre acima, não este aviso.
-
-> ⚠️ **QUESTÕES COMPROMETIDAS — REESCREVER ANTES DE USAR EM AVALIAÇÃO.**
-> De 2026-05-15 a 2026-07-25 esta seção esteve **sem esse bloco** e publicada no site da
-> disciplina, com a alternativa correta marcada. Corrigido em 25/07 (`edf7ec2`) — o que não
-> desfaz quem já leu, nem cache de buscador. Decisão do Romualdo em 25/07: rotacionar.
-
-### Questão 1: Prática (Múltipla Escolha — Nível: Básico)
-**Enunciado:** Um administrador de sistemas instalou com sucesso uma VM Windows 11 e uma VM Ubuntu Server no Hyper-V. Ele configurou um Virtual Switch do tipo "Privado" e conectou ambas as máquinas a ele. O objetivo é que as duas máquinas consigam se comunicar entre si. Ao abrir o prompt do Windows, o administrador tenta realizar um "ping" no Google (8.8.8.8) e não obtém resposta. Por que isso acontece?
-
-- [ ] A) O firewall do Windows bloqueia conexões de saída por padrão em redes privadas.
-- [x] B) ✅ Virtual Switches do tipo "Privado" não fornecem acesso externo (Internet) ou à máquina física, permitindo apenas a comunicação entre as VMs ali conectadas.
-- [ ] C) O Windows 11 requer que o Hyper-V utilize Switches do tipo Interno para suportar requisições DNS.
-- [ ] D) Falta configurar o adaptador em modo "Bridge", que é a única forma de habilitar ICMP.
-
-**Justificativa:** O comutador Privado isola completamente as máquinas virtuais, criando uma rede estritamente local entre elas, sem roteamento para a placa física hospedeira ou para a Internet.
-
----
-
-### Questão 2: Prática (Múltipla Escolha — Nível: Intermediário)
-**Enunciado:** Durante a criação da VM para o Windows 11 no Hyper-V, um aluno não consegue passar da tela de verificação de requisitos do Windows durante o *boot* da imagem ISO. Qual configuração do Hyper-V é **estritamente obrigatória** para superar esse erro?
-
-- [ ] A) Selecionar uma Máquina Virtual de Geração 1 e habilitar o suporte legado a BIOS.
-- [ ] B) Atribuir no mínimo 8 GB de RAM Dinâmica nas configurações de memória.
-- [ ] C) Habilitar a configuração de "Switch Externo" na placa de rede, pois o instalador precisa baixar os requisitos.
-- [x] D) ✅ Escolher Geração 2 ao criar a VM e marcar a opção "Habilitar Trusted Platform Module (TPM)" na guia Segurança.
-
-**Justificativa:** O Windows 11 exige obrigatoriamente a arquitetura UEFI (disponível apenas na Geração 2 do Hyper-V) e um módulo TPM 2.0 (emulado ativando a opção de segurança na VM).
-
----
-%%
-
 ## 📄 Artigo de Aprofundamento
 
 - [Virtual Switch do Hyper-V (Documentação Oficial da Microsoft)](https://learn.microsoft.com/pt-br/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)
